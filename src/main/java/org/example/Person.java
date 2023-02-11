@@ -26,7 +26,7 @@ public class Person {
         this.gender = "";
     }
 
-    //Este método no se utiliza
+    //Este método lo he comentado porque no se utiliza
 //    public String getName() { return name; }
 
     public int getAge() { return age; }
