@@ -9,7 +9,15 @@ public class Person {
     private final String gender ; // Male, Female
 
     public Person(String name, int age, String gender) {
-
+        if(age < 0 || age > 130){
+            throw new InvalidAgeException("No es posible tener " + age + "años.");
+        }
+        if(!gender.equals("Female") && !gender.equals("Male")){
+            throw new InvalidGenderException("El género " + gender + " no se contempla en este programa");
+        }
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
 
     public String name() { return name; }
