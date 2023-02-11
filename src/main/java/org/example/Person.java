@@ -36,6 +36,23 @@ public class Person {
      */
 
     public double[] averageAgePerGender(List<Person> persons) {
-        return null;
+        int numberOfMen = 0;
+        int numberOfWomen = 0;
+        int ageAccumulatorForMen = 0;
+        int ageAccumulatorForWomen = 0;
+
+        for(Person currentPerson : persons){
+            String currentGender = currentPerson.gender;
+            if(currentGender.equals("Male")){
+                numberOfMen++;
+                ageAccumulatorForMen+=currentPerson.age;
+            } else {
+                numberOfWomen++;
+                ageAccumulatorForWomen+=currentPerson.age;
+            }
+        }
+        double averageForMen = (numberOfMen == 0)?0:(ageAccumulatorForMen/numberOfMen);
+        double averageForWomen = (numberOfWomen == 0)?0:(ageAccumulatorForWomen/numberOfWomen);
+        return new double[]{averageForMen, averageForWomen};
     }
 }
