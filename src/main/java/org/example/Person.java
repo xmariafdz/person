@@ -20,6 +20,12 @@ public class Person {
         this.gender = gender;
     }
 
+    public Person(){
+        this.name = "";
+        this.age = -1;
+        this.gender = "";
+    }
+
     public String name() { return name; }
 
     public int age() { return age; }
