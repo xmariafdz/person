@@ -26,11 +26,12 @@ public class Person {
         this.gender = "";
     }
 
-    public String name() { return name; }
+    //Este método no se utiliza
+//    public String getName() { return name; }
 
-    public int age() { return age; }
+    public int getAge() { return age; }
 
-    public String gender() { return gender; }
+    public String getGender() { return gender; }
 
     /**
      * Computes the average age of male ande female persons in a list and returns the result in an
@@ -48,10 +49,10 @@ public class Person {
         int ageAccumulatorForWomen = 0;
 
         for(Person currentPerson : persons){
-            String currentGender = currentPerson.gender;
+            String currentGender = currentPerson.getGender();
             if(currentGender.equals("Male")){
                 numberOfMen++;
-                ageAccumulatorForMen+=currentPerson.age;
+                ageAccumulatorForMen+=currentPerson.getAge();
             } else {
                 numberOfWomen++;
                 ageAccumulatorForWomen+=currentPerson.age;
