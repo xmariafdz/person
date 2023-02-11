@@ -1,4 +1,7 @@
+import org.example.InvalidAgeException;
+import org.example.InvalidGenderException;
 import org.example.Person;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -46,4 +49,28 @@ public class PersonTest {
 
         assertArrayEquals(obtainedValue,expectedValue);
     }
+
+    //Las siguientes pruebas han sido realizadas con la ayuda de la herramienta chatGpt
+    @Test
+    public void testInvalidAge() {
+        int age = -1;
+
+        // Act & Assert
+        Throwable exception = Assertions.assertThrows(InvalidAgeException.class, () -> {
+            new Person("John Doe", age, "Male");
+        });
+        Assertions.assertEquals("No es posible tener " + age + "años.", exception.getMessage());
+    }
+
+    @Test
+    public void testInvalidGender() {
+        String gender = "Other";
+
+        // Act & Assert
+        Throwable exception = Assertions.assertThrows(InvalidGenderException.class, () -> {
+            new Person("John Doe", 30, gender);
+        });
+        Assertions.assertEquals("El género " + gender + " no se contempla en este programa", exception.getMessage());
+    }
+
 }
