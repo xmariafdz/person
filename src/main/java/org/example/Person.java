@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Person {
 
-    private final String name ;
+    private final String name = " ";
     private final int age ;
     private final String gender ; // Male, Female
 
