@@ -9,14 +9,29 @@ public class Person {
     private final String gender ; // Male, Female
 
     public Person(String name, int age, String gender) {
-
+        if(age < 0 || age > 130){
+            throw new InvalidAgeException("No es posible tener " + age + "años.");
+        }
+        if(!gender.equals("Female") && !gender.equals("Male")){
+            throw new InvalidGenderException("El género " + gender + " no se contempla en este programa");
+        }
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
     }
 
-    public String name() { return name; }
+    public Person(){
+        this.name = "";
+        this.age = -1;
+        this.gender = "";
+    }
 
-    public int age() { return age; }
+    //Este método lo he comentado porque no se utiliza
+//    public String getName() { return name; }
 
-    public String gender() { return gender; }
+    public int getAge() { return age; }
+
+    public String getGender() { return gender; }
 
     /**
      * Computes the average age of male ande female persons in a list and returns the result in an
@@ -28,6 +43,23 @@ public class Person {
      */
 
     public double[] averageAgePerGender(List<Person> persons) {
-        return null;
+        int numberOfMen = 0;
+        int numberOfWomen = 0;
+        int ageAccumulatorForMen = 0;
+        int ageAccumulatorForWomen = 0;
+
+        for(Person currentPerson : persons){
+            String currentGender = currentPerson.getGender();
+            if(currentGender.equals("Male")){
+                numberOfMen++;
+                ageAccumulatorForMen+=currentPerson.getAge();
+            } else {
+                numberOfWomen++;
+                ageAccumulatorForWomen+=currentPerson.age;
+            }
+        }
+        double averageForMen = (numberOfMen == 0)?0:(ageAccumulatorForMen/numberOfMen);
+        double averageForWomen = (numberOfWomen == 0)?0:(ageAccumulatorForWomen/numberOfWomen);
+        return new double[]{averageForMen, averageForWomen};
     }
 }
